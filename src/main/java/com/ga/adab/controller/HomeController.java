@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HomeController {
-
+//first controller
 	@GetMapping("/")
 	public String hello() {
 		return "Hello , this is our very first java wep appliction";
