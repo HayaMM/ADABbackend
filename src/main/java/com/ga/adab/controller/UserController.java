@@ -5,7 +5,6 @@ import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -18,8 +17,7 @@ import com.ga.adab.model.User;
 
 @RestController
 public class UserController {
-	@Autowired
-	private Environment env;
+
 	
 	@Autowired
 	private UserDao dao;
@@ -52,7 +50,7 @@ public class UserController {
 		 
 	 }
 	 
-	// HTTP GET REQUEST - User Edit
+	// HTTP Put REQUEST - User Edit
 		@PutMapping("/user/edit")
 		public User editUser(@RequestBody User user) {
 			dao.save(user);
