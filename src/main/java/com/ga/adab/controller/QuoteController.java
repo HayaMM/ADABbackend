@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ga.adab.dao.QuoteDao;
@@ -23,5 +24,9 @@ public Iterable<Quote> getQuote(){
 	var it=dao.findAll();
 	return it;
 }
-
+@GetMapping("/quote/detail")
+public Quote quoteDetails(@RequestParam int id) {
+Quote quote =dao.findById(id);
+return quote;
+}
 }
