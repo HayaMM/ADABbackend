@@ -4,6 +4,9 @@ import java.time.LocalDateTime;
 import javax.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import java.sql.Date;
+import java.util.Set;
+
 
 @Entity
 @Table(name="Quote")
@@ -11,11 +14,12 @@ public class Quote {
 @Id
 @GeneratedValue
 private int id;
-private String title;
-private String body;
-private String writer;
-private String from;
-private int reivew;
+
+private String qtitle;
+private String qbody;
+private String qwriter;
+private String qfrom;
+private int qreivew;
 
 ////Relationship many quotes belongs to one user:
 //@ManyToOne
@@ -26,11 +30,11 @@ private int reivew;
 //@OneToMany(mappedBy="quote")
 //private Set<Like> likes;
 
-@Column(name="createdAt", nullable = false, updatable = false)
+@Column(name="createdAt", nullable=false, updatable=false)
 @CreationTimestamp
 private LocalDateTime createAt;
 
-@Column(name="updatedat", nullable = false, updatable = true)
+@Column(name="updatedat", nullable=false, updatable=true)
 @UpdateTimestamp
 private LocalDateTime updateAt;
 
@@ -42,44 +46,44 @@ public void setId(int id) {
 	this.id = id;
 }
 
-public String getTitle() {
-	return title;
+public String getQtitle() {
+	return qtitle;
 }
 
-public void setTitle(String title) {
-	this.title = title;
+public void setQtitle(String qtitle) {
+	this.qtitle = qtitle;
 }
 
-public String getBody() {
-	return body;
+public String getQbody() {
+	return qbody;
 }
 
-public void setBody(String body) {
-	this.body = body;
+public void setQbody(String qbody) {
+	this.qbody = qbody;
 }
 
-public String getWriter() {
-	return writer;
+public String getQwriter() {
+	return qwriter;
 }
 
-public void setWriter(String writer) {
-	this.writer = writer;
+public void setQwriter(String qwriter) {
+	this.qwriter = qwriter;
 }
 
-public String getFrom() {
-	return from;
+public String getQfrom() {
+	return qfrom;
 }
 
-public void setFrom(String from) {
-	this.from = from;
+public void setQfrom(String qfrom) {
+	this.qfrom = qfrom;
 }
 
-public int getReivew() {
-	return reivew;
+public int getQreivew() {
+	return qreivew;
 }
 
-public void setReivew(int reivew) {
-	this.reivew = reivew;
+public void setQreivew(int qreivew) {
+	this.qreivew = qreivew;
 }
 
 public LocalDateTime getCreateAt() {
@@ -97,5 +101,7 @@ public LocalDateTime getUpdateAt() {
 public void setUpdateAt(LocalDateTime updateAt) {
 	this.updateAt = updateAt;
 }
+
+
 
 }
