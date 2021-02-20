@@ -8,11 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ga.adab.dao.UserDao;
 import com.ga.adab.model.User;
+
 
 @RestController
 public class UserController {
@@ -49,4 +51,11 @@ public class UserController {
 		 return response;
 		 
 	 }
+	 
+	// HTTP GET REQUEST - User Edit
+		@PutMapping("/user/edit")
+		public User editUser(@RequestBody User user) {
+			dao.save(user);
+			return user;
+		}
 }
