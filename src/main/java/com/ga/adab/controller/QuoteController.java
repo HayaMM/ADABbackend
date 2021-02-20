@@ -1,6 +1,7 @@
 package com.ga.adab.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,4 +18,10 @@ public Quote addQuote(@RequestBody Quote quote) {
 	dao.save(quote);
 	return quote;
 }
+@GetMapping("/quote/index")
+public Iterable<Quote> getQuote(){
+	var it=dao.findAll();
+	return it;
+}
+
 }
