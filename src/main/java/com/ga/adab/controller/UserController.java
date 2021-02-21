@@ -12,11 +12,14 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.ga.adab.config.JwtUtil;
 import com.ga.adab.dao.UserDao;
 import com.ga.adab.model.JwtResponse;
@@ -95,4 +98,22 @@ public class UserController {
 			return ResponseEntity.ok(new JwtResponse(jwtToken));
 			 
 		 }
+		 
+		// HTTP GET REQUEST - User Detail
+			@PostMapping("/user/changepassword")
+			public User userDetails(@RequestParam int id,@RequestBody ObjectNode json) {
+				String Password = json.get("password").asText(); 
+				String newPassword = json.get("newPassword").asText(); 
+				System.out.println(Password);
+				System.out.println(newPassword);
+
+				User user = dao.findById(id);
+				BCryptPasswordEncoder bCrypt = new BCryptPasswordEncoder();
+				 String cryptPassword = bCrypt.encode(newPassword);
+				 user.setPassword(cryptPassword);
+				 dao.save(user);
+				System.out.println(user.getPassword());
+
+				return user;
+			}
 }
