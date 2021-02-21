@@ -44,18 +44,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			http
 			.csrf().disable()
 			.authorizeRequests()
-				.antMatchers("/author/add","/article/add").hasAnyRole("ADMIN","USER")
-				.antMatchers("/author/edit","/article/edit").hasAnyRole("ADMIN","USER")
-				.antMatchers("/author/delete","/article/delete").hasRole("ADMIN")
+				.antMatchers("/quote/detail","/article/add").hasAnyRole("ADMIN","USER")
+				.antMatchers("/quote/edit","/quote/delete").hasAnyRole("ADMIN","USER")
+//				.antMatchers("/author/delete","/article/delete").hasRole("ADMIN")
 
-//				.and()
-//				.formLogin()
-//				
-//				.and()
-//				.logout()
-//				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-//				.logoutSuccessUrl("/").deleteCookies("JSESSIONID").invalidateHttpSession(true)
-//				
 				.and()
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 				;
