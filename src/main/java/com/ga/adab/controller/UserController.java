@@ -12,15 +12,18 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ga.adab.config.JwtUtil;
 import com.ga.adab.dao.UserDao;
 import com.ga.adab.model.JwtResponse;
 import com.ga.adab.model.User;
+
 
 
 
@@ -95,4 +98,12 @@ public class UserController {
 			return ResponseEntity.ok(new JwtResponse(jwtToken));
 			 
 		 }
+		 
+		// HTTP DELETE REQUEST - User Delete
+			@DeleteMapping("/user/delete")
+			public boolean deleteAccount(@RequestParam int id) {
+				User user = dao.findById(id);
+				dao.deleteById(id);
+				return true;
+			}
 }
