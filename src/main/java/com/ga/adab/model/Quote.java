@@ -20,9 +20,9 @@ private String qfrom;
 private int qreivew;
 
 ////Relationship many quotes belongs to one user:
-//@ManyToOne
-//@JoinColumn(name="FK_UserId")
-//private User user;
+@ManyToOne
+@JoinColumn(name="FK_UserId")
+private User user;
 
 ////Relationship one quote has many likes:
 //@OneToMany(mappedBy="quote")
@@ -108,13 +108,13 @@ public void setUpdateAt(LocalDateTime updateAt) {
 //	Likeds = likeds;
 //}
 
-//public User getUser() {
-//	return user;
-//}
-//
-//public void setUser(User user) {
-//	this.user = user;
-//}
+public User getUser() {
+	return user;
+}
+
+public void setUser(User user) {
+	this.user = user;
+}
 
 
 }
