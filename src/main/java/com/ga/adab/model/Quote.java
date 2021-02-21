@@ -25,8 +25,8 @@ private int qreivew;
 private User user;
 
 ////Relationship one quote has many likes:
-//@OneToMany(mappedBy="quote")
-//private Set<Liked> Likeds;
+@OneToMany(mappedBy="quote")
+private Set<Liked> Likeds;
 
 @Column(name="createdAt", nullable=false, updatable=false)
 @CreationTimestamp
@@ -100,13 +100,13 @@ public void setUpdateAt(LocalDateTime updateAt) {
 	this.updateAt = updateAt;
 }
 
-//public Set<Liked> getLikeds() {
-//	return Likeds;
-//}
-//
-//public void setLikeds(Set<Liked> likeds) {
-//	Likeds = likeds;
-//}
+public Set<Liked> getLikeds() {
+	return Likeds;
+}
+
+public void setLikeds(Set<Liked> likeds) {
+	Likeds = likeds;
+}
 
 
 public User getUser() {
