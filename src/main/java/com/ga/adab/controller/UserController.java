@@ -12,7 +12,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.GetMapping;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,6 +25,7 @@ import com.ga.adab.config.JwtUtil;
 import com.ga.adab.dao.UserDao;
 import com.ga.adab.model.JwtResponse;
 import com.ga.adab.model.User;
+
 
 @RestController
 public class UserController {
@@ -111,6 +113,45 @@ public class UserController {
 			System.out.println("not equless");
 		}
 
+		
+		@Autowired
+		 AuthenticationManager authenticationManager;
+		 @Autowired
+		 JwtUtil jwtUtil;
+		 @Autowired
+		 UserDetailsService userDetailsService;
+		 
+		 @PostMapping("/user/authenticate")
+		 public ResponseEntity<?> authenticate(@RequestBody User user){
+			 
+			 try {
+				 authenticationManager.authenticate(
+						 new UsernamePasswordAuthenticationToken(user.getEmailAddress(),user.getPassword())
+						 );
+			 }
+			 catch(BadCredentialsException e) {
+				 String res="Incorrect username or password";
+				 return ResponseEntity.ok(res);
+			 }
+			 
+			 //Conitnue
+			 UserDetails userDetails=userDetailsService.loadUserByUsername(user.getEmailAddress());
+			 String jwtToken= jwtUtil.generateToken(userDetails);
+			 System.out.println(jwtToken);
+			return ResponseEntity.ok(new JwtResponse(jwtToken));
+			 
+		 }
+		 
+		// HTTP DELETE REQUEST - User Delete
+			@DeleteMapping("/user/delete")
+			public boolean deleteAccount(@RequestParam int id) {
+				User user = dao.findById(id);
+				dao.deleteById(id);
+				return true;
+			}
+
+
 		return user;
 	}
+
 }
