@@ -96,7 +96,7 @@ public class UserController {
 
 	// HTTP GET REQUEST - User Detail
 	@PostMapping("/user/changepassword")
-	public User userDetails(@RequestParam int id, @RequestBody ObjectNode json) {
+	public User changepassword(@RequestParam int id, @RequestBody ObjectNode json) {
 
 		BCryptPasswordEncoder bCrypt = new BCryptPasswordEncoder();
 		User user = dao.findById(id);
@@ -113,34 +113,11 @@ public class UserController {
 			System.out.println("not equless");
 		}
 
+
+		return user;
+	}
 		
-		@Autowired
-		 AuthenticationManager authenticationManager;
-		 @Autowired
-		 JwtUtil jwtUtil;
-		 @Autowired
-		 UserDetailsService userDetailsService;
-		 
-		 @PostMapping("/user/authenticate")
-		 public ResponseEntity<?> authenticate(@RequestBody User user){
-			 
-			 try {
-				 authenticationManager.authenticate(
-						 new UsernamePasswordAuthenticationToken(user.getEmailAddress(),user.getPassword())
-						 );
-			 }
-			 catch(BadCredentialsException e) {
-				 String res="Incorrect username or password";
-				 return ResponseEntity.ok(res);
-			 }
-			 
-			 //Conitnue
-			 UserDetails userDetails=userDetailsService.loadUserByUsername(user.getEmailAddress());
-			 String jwtToken= jwtUtil.generateToken(userDetails);
-			 System.out.println(jwtToken);
-			return ResponseEntity.ok(new JwtResponse(jwtToken));
-			 
-		 }
+
 		 
 		// HTTP DELETE REQUEST - User Delete
 			@DeleteMapping("/user/delete")
@@ -150,8 +127,5 @@ public class UserController {
 				return true;
 			}
 
-
-		return user;
-	}
 
 }
