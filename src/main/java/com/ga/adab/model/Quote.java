@@ -108,6 +108,7 @@ public void setUpdateAt(LocalDateTime updateAt) {
 //	Likeds = likeds;
 //}
 
+
 public User getUser() {
 	return user;
 }
@@ -115,6 +116,7 @@ public User getUser() {
 public void setUser(User user) {
 	this.user = user;
 }
+
 
 
 }

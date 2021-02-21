@@ -41,6 +41,7 @@ public class Liked {
 	}
 
 
+
 //	public User getUser() {
 //		return user;
 //	}
@@ -62,6 +63,7 @@ public class Liked {
 	public LocalDateTime getCreateAt() {
 		return createAt;
 	}
+
 
 
 	public boolean getQliked() {
