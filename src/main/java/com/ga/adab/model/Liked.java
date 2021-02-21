@@ -40,7 +40,7 @@ public class Liked {
 		this.id = id;
 	}
 
-	
+
 
 //	public User getUser() {
 //		return user;
@@ -64,8 +64,7 @@ public class Liked {
 		return createAt;
 	}
 
-	
-	
+
 
 	public boolean getQliked() {
 		return qliked;
