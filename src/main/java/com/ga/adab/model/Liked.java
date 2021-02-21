@@ -49,6 +49,7 @@ public class Liked {
 		this.user = user;
 	}
 
+
 	
 	public Quote getQuote() {
 		return quote;
@@ -61,6 +62,7 @@ public class Liked {
 	public LocalDateTime getCreateAt() {
 		return createAt;
 	}
+
 
 
 	public boolean getQliked() {
