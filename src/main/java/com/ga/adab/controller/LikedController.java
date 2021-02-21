@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ga.adab.dao.LikedDao;
@@ -24,5 +25,10 @@ public class LikedController {
 	public Iterable<Liked> getLiked(){
 		var it=dao.findAll();
 		return it;
+	}
+	@GetMapping("/liked/detail")
+	public Liked DetailLiked(@RequestParam int id) {
+		Liked liked=dao.findById(id);
+		return liked;
 	}
 }
