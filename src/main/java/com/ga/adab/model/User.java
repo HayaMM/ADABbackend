@@ -24,7 +24,8 @@ public class User {
 	private Date dateofBirth;
 	private String password;
 	private String userRole;
-	
+	private String resetPasswordToken;
+
 	@Column(name="createdAt", nullable = false, updatable = false)
 	@CreationTimestamp
 	private LocalDateTime createAt;
@@ -103,6 +104,14 @@ public class User {
 
 	public void setDateofBirth(Date dateofBirth) {
 		this.dateofBirth = dateofBirth;
+	}
+
+	public String getResetPasswordToken() {
+		return resetPasswordToken;
+	}
+
+	public void setResetPasswordToken(String resetPasswordToken) {
+		this.resetPasswordToken = resetPasswordToken;
 	}
 	
 	
