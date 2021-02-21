@@ -12,7 +12,7 @@ public class Liked {
 	@GeneratedValue
 	private int id;
 	
-	private boolean isQLiked;
+	private boolean qliked;
 	
 	//// Relationship many likes belong to one user:
 //	@ManyToOne
@@ -65,12 +65,14 @@ public class Liked {
 	}
 
 	
-	public boolean isQLiked() {
-		return isQLiked;
+	
+
+	public boolean getQliked() {
+		return qliked;
 	}
 
-	public void setQLiked(boolean isQLiked) {
-		this.isQLiked = isQLiked;
+	public void setQliked(boolean qliked) {
+		this.qliked = qliked;
 	}
 
 	public void setCreateAt(LocalDateTime createAt) {
