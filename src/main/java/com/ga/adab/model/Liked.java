@@ -15,14 +15,14 @@ public class Liked {
 	private boolean qliked;
 	
 	//// Relationship many likes belong to one user:
-//	@ManyToOne
-//	@JoinColumn(name="FK_UserId")
-//	private User user;
+	@ManyToOne
+	@JoinColumn(name="FK_UserId")
+	private User user;
 	
 	//// Relationship many likes for one quote:
-//	@ManyToOne
-//	@JoinColumn(name="FK_QuoteId")
-//	private Quote quote;
+	@ManyToOne
+	@JoinColumn(name="FK_QuoteId")
+	private Quote quote;
 	
 	@Column(name="createdAt", nullable=false, updatable=false)
 	@CreationTimestamp
@@ -41,23 +41,22 @@ public class Liked {
 	}
 
 
-//	public User getUser() {
-//		return user;
-//	}
-//
-//	public void setUser(User user) {
-//		this.user = user;
-//	}
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	
+	public Quote getQuote() {
+		return quote;
+	}
 
-//	public Quote getQuote() {
-//		return quote;
-//	}
-//
-//	public void setQuote(Quote quote) {
-//		this.quote = quote;
-//	}
+	public void setQuote(Quote quote) {
+		this.quote = quote;
+	}
 
 	public LocalDateTime getCreateAt() {
 		return createAt;
