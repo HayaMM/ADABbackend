@@ -2,11 +2,13 @@ package com.ga.adab.model;
 
 import java.sql.Date;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -25,6 +27,14 @@ public class User {
 	private String password;
 	private String userRole;
 	private String resetPasswordToken;
+	
+//Relationship one user has many quote:
+	@OneToMany(mappedBy="user")
+	private Set<Quote> quotes;
+	
+	//Relationship one user has many like:
+//		@OneToMany(mappedBy="user")
+//		private Set<Liked> likes;
 
 	@Column(name="createdAt", nullable = false, updatable = false)
 	@CreationTimestamp
@@ -112,6 +122,14 @@ public class User {
 
 	public void setResetPasswordToken(String resetPasswordToken) {
 		this.resetPasswordToken = resetPasswordToken;
+	}
+
+	public Set<Quote> getQuotes() {
+		return quotes;
+	}
+
+	public void setQuotes(Set<Quote> quotes) {
+		this.quotes = quotes;
 	}
 	
 	
