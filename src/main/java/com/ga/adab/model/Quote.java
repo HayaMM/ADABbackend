@@ -1,12 +1,10 @@
 package com.ga.adab.model;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 import javax.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import java.sql.Date;
-import java.util.Set;
-
 
 @Entity
 @Table(name="Quote")
@@ -28,7 +26,7 @@ private int qreivew;
 
 ////Relationship one quote has many likes:
 //@OneToMany(mappedBy="quote")
-//private Set<Like> likes;
+//private Set<Liked> Likeds;
 
 @Column(name="createdAt", nullable=false, updatable=false)
 @CreationTimestamp
@@ -102,6 +100,21 @@ public void setUpdateAt(LocalDateTime updateAt) {
 	this.updateAt = updateAt;
 }
 
+//public Set<Liked> getLikeds() {
+//	return Likeds;
+//}
+//
+//public void setLikeds(Set<Liked> likeds) {
+//	Likeds = likeds;
+//}
+
+//public User getUser() {
+//	return user;
+//}
+//
+//public void setUser(User user) {
+//	this.user = user;
+//}
 
 
 }
