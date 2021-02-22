@@ -29,12 +29,28 @@ public class User {
 	private String resetPasswordToken;
 	
 //Relationship one user has many quote:
-//	@OneToMany(mappedBy="user")
-//	private Set<Quote> quotes;
-//	
-	//Relationship one user has many like:
-//		@OneToMany(mappedBy="user")
-//		private Set<Liked> likes;
+	@OneToMany(mappedBy="user")
+	private Set<Quote> quotes;
+	
+//	Relationship one user has many like:
+		@OneToMany(mappedBy="user")
+		private Set<Liked> likes;
+
+	public Set<Quote> getQuotes() {
+			return quotes;
+		}
+
+		public void setQuotes(Set<Quote> quotes) {
+			this.quotes = quotes;
+		}
+
+		public Set<Liked> getLikes() {
+			return likes;
+		}
+
+		public void setLikes(Set<Liked> likes) {
+			this.likes = likes;
+		}
 
 	@Column(name="createdAt", nullable = false, updatable = false)
 	@CreationTimestamp
