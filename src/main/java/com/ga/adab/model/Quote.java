@@ -18,6 +18,8 @@ private String qbody;
 private String qwriter;
 private String qfrom;
 private int qreivew;
+private int likes;
+
 
 ////Relationship many quotes belongs to one user:
 @ManyToOne
@@ -115,6 +117,14 @@ public User getUser() {
 
 public void setUser(User user) {
 	this.user = user;
+}
+
+public int getLikes() {
+	return likes;
+}
+
+public void setLikes(int likes) {
+	this.likes = likes;
 }
 
 
