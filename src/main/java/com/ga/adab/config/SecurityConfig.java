@@ -44,9 +44,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			http
 			.csrf().disable()
 			.authorizeRequests()
-				.antMatchers("/quote/detail","/article/add").hasAnyRole("ADMIN","USER")
+				.antMatchers("/quote/detail","/quote/add").hasAnyRole("ADMIN","USER")
 				.antMatchers("/quote/edit","/quote/delete").hasAnyRole("ADMIN","USER")
-//				.antMatchers("/author/delete","/article/delete").hasRole("ADMIN")
+			.antMatchers("/author/delete","/liked/add").hasAnyRole("ADMIN","USER")
 
 				.and()
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)

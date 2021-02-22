@@ -68,7 +68,7 @@ public class ForgotPasswordController {
 	public void sendEmail(String email, String resetPasswordLink)
 			throws MessagingException, UnsupportedEncodingException {
 
-		System.out.println("------------------------------in send email");
+		System.out.println("----------------------------------------------------------in send email");
 		MimeMessage message = mailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(message);
 

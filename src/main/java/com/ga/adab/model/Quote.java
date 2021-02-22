@@ -18,7 +18,7 @@ private String qbody;
 private String qwriter;
 private String qfrom;
 private int qreivew;
-private int likes;
+
 
 
 ////Relationship many quotes belongs to one user:
@@ -30,13 +30,14 @@ private User user;
 @OneToMany(mappedBy="quote")
 private Set<Liked> Likeds;
 
-@Column(name="createdAt", nullable=false, updatable=false)
+@Column(name="createdAt", nullable = false, updatable = false)
 @CreationTimestamp
 private LocalDateTime createAt;
 
-@Column(name="updatedat", nullable=false, updatable=true)
+@Column(name="updatedat", nullable = false, updatable = true)
 @UpdateTimestamp
 private LocalDateTime updateAt;
+
 
 public int getId() {
 	return id;
@@ -117,14 +118,6 @@ public User getUser() {
 
 public void setUser(User user) {
 	this.user = user;
-}
-
-public int getLikes() {
-	return likes;
-}
-
-public void setLikes(int likes) {
-	this.likes = likes;
 }
 
 
