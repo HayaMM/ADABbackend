@@ -32,10 +32,7 @@ public class User {
 	@OneToMany(mappedBy="user")
 	private Set<Quote> quotes;
 	
-<<<<<<< HEAD
-//	Relationship one user has many like:
-		@OneToMany(mappedBy="user")
-		private Set<Liked> likes;
+
 
 	public Set<Quote> getQuotes() {
 			return quotes;
@@ -52,11 +49,9 @@ public class User {
 		public void setLikes(Set<Liked> likes) {
 			this.likes = likes;
 		}
-=======
 //Relationship one user has many like:
 		@OneToMany(mappedBy="user")
 		private Set<Liked> likes;
->>>>>>> 8541926584c165ea84ff991ad21fac80bacc463f
 
 	@Column(name="createdAt", nullable = false, updatable = false)
 	@CreationTimestamp
@@ -146,24 +141,5 @@ public class User {
 		this.resetPasswordToken = resetPasswordToken;
 	}
 
-	public Set<Quote> getQuotes() {
-		return quotes;
-	}
-
-	public void setQuotes(Set<Quote> quotes) {
-		this.quotes = quotes;
-	}
-
-	public Set<Liked> getLikes() {
-		return likes;
-	}
-
-	public void setLikes(Set<Liked> likes) {
-		this.likes = likes;
-	}
-
-	
-	
-	
 
 }
