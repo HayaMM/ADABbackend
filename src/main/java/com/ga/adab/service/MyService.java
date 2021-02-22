@@ -29,14 +29,14 @@ public class MyService {
         }
     }
 
-    public User getImages(Long id) {
-        Optional findById = dao.findById(id);
-        if (findById.isPresent()) {
-            User getImageDetails = (User) findById.get();
-            logger.info("id= " + getImageDetails.getId() + " FirstName= " + getImageDetails.getFirstName());
-            return getImageDetails;
-        } else {
-            return null;
-        }
-    }
+//    public User getImages(Long id) {
+//        Optional findById = dao.findById(id);
+//        if (findById.isPresent()) {
+//            User getImageDetails = (User) findById.get();
+//            logger.info("id= " + getImageDetails.getId() + " FirstName= " + getImageDetails.getFirstName());
+//            return getImageDetails;
+//        } else {
+//            return null;
+//        }
+//    }
 }
