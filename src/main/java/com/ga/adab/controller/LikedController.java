@@ -34,9 +34,9 @@ public class LikedController {
 	@Transactional
 	@PostMapping("/liked/add")
 	public Liked addLiked(@RequestBody Liked liked ) {
-		Quote q = quotedao.findById(25);
+		Quote q = liked.getQuote();
 		int id = q.getId();
-		User u = userdao.findById(10);
+		User u =liked.getUser();
 		liked.setQuote(q);
 		liked.setUser(u);
 		dao.save(liked);

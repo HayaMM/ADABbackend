@@ -2,11 +2,9 @@ package com.ga.adab.service;
 
 
 
-import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.support.DaoSupport;
 import org.springframework.stereotype.Service;
 
 import com.ga.adab.dao.UserDao;
@@ -19,9 +17,11 @@ public class MyService {
     @Autowired
     private UserDao dao;
 
-    public int saveImage(User user) {
+    public int saveImage(User newuser, User user) {
         try {
-            dao.save(user);
+        	user.setImage(newuser.getImage());
+        	newuser = user;
+            dao.save(newuser);
             return 1;
         } catch (Exception e) {
             logger.error("ERROR", e);

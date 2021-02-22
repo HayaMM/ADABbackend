@@ -103,7 +103,7 @@ public class UserController {
 
 	}
 
-	// HTTP GET REQUEST - User Detail
+	// HTTP GET REQUEST - User changepassword
 	@PostMapping("/user/changepassword")
 	public User changepassword(@RequestParam int id, @RequestBody ObjectNode json) {
 
@@ -139,11 +139,12 @@ public class UserController {
 			  @PostMapping("user/image/fileupload")
 			    public User fileUpload(@RequestParam("id") int id, @RequestParam("file") MultipartFile file) {
 				  User user = dao.findById(id); 
+				  
 				  try {
 			            logger.info("id= " + id);
-			            byte[] image = file.getBytes();
-			             user = new User(id, image);
-			            int saveImage = myService.saveImage(user);
+			            byte[] image = file.getBytes(); 
+			            User newuser = new User(id, image);
+			            int saveImage = myService.saveImage(newuser , user);
 			            if (saveImage == 1) {
 			                return user;
 			            } else {

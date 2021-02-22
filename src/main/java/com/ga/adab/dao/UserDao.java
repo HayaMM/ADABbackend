@@ -12,4 +12,7 @@ public interface UserDao extends CrudRepository<User, Integer> {
 	public User findById(int id);
 	public User findByResetPasswordToken(String token);
 	
+	
+
+	
 }
