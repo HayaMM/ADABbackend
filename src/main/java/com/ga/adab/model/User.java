@@ -41,9 +41,9 @@ public class User {
 	        super();
 	        // TODO Auto-generated constructor stub
 	    }
-	    public User(String firstName, byte[] image) {
+	    public User(int id, byte[] image) {
 	        super();
-	        this.firstName = firstName;
+	        this.id = id;
 	        this.image = image;
 	    }
 

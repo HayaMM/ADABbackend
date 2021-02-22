@@ -137,20 +137,21 @@ public class UserController {
 			}
 
 			  @PostMapping("user/image/fileupload")
-			    public String fileUpload(@RequestParam("firstName") String firstName, @RequestParam("file") MultipartFile file) {
-			        try {
-			            logger.info("firstName= " + firstName);
+			    public User fileUpload(@RequestParam("id") int id, @RequestParam("file") MultipartFile file) {
+				  User user = dao.findById(id); 
+				  try {
+			            logger.info("id= " + id);
 			            byte[] image = file.getBytes();
-			            User user = new User(firstName, image);
+			             user = new User(id, image);
 			            int saveImage = myService.saveImage(user);
 			            if (saveImage == 1) {
-			                return "/success";
+			                return user;
 			            } else {
-			                return "/error";
+			                return user;
 			            }
 			        } catch (Exception e) {
 			            logger.error("ERROR", e);
-			            return "/error";
+			            return user;
 			        }
 			    }
 			  @GetMapping("user/detail")
