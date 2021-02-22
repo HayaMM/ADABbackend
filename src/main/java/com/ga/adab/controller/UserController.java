@@ -4,6 +4,8 @@ import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -12,23 +14,30 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.ga.adab.config.JwtUtil;
 import com.ga.adab.dao.UserDao;
 import com.ga.adab.model.JwtResponse;
 import com.ga.adab.model.User;
+import com.ga.adab.service.MyService;
+
 
 
 @RestController
 public class UserController {
+
+	  private static final Logger logger = LoggerFactory.getLogger("MyController.class");
+	    @Autowired
+	    private MyService myService;
 
 	@Autowired
 	private UserDao dao;
@@ -127,5 +136,26 @@ public class UserController {
 				return true;
 			}
 
-
+			  @PostMapping("user/image/fileupload")
+			    public String fileUpload(@RequestParam("firstName") String firstName, @RequestParam("file") MultipartFile file) {
+			        try {
+			            logger.info("firstName= " + firstName);
+			            byte[] image = file.getBytes();
+			            User user = new User(firstName, image);
+			            int saveImage = myService.saveImage(user);
+			            if (saveImage == 1) {
+			                return "/success";
+			            } else {
+			                return "/error";
+			            }
+			        } catch (Exception e) {
+			            logger.error("ERROR", e);
+			            return "/error";
+			        }
+			    }
+			  @GetMapping("user/detail")
+			    public User Detils(@RequestParam int id) {
+				  User user =dao.findById(id);
+			    	return user;
+			    }
 }

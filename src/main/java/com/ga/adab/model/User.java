@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -32,6 +33,19 @@ public class User {
 	@OneToMany(mappedBy="user")
 	private Set<Quote> quotes;
 	
+	 @Lob
+	    @Column(name = "Image")
+	    private byte[] image;
+
+	    public User() {
+	        super();
+	        // TODO Auto-generated constructor stub
+	    }
+	    public User(String firstName, byte[] image) {
+	        super();
+	        this.firstName = firstName;
+	        this.image = image;
+	    }
 
 
 	public Set<Quote> getQuotes() {
@@ -141,5 +155,10 @@ public class User {
 		this.resetPasswordToken = resetPasswordToken;
 	}
 
-
+	public byte[] getImage() {
+		return image;
+	}
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
 }
