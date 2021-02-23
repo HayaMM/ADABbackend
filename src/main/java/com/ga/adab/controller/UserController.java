@@ -131,7 +131,7 @@ public class UserController {
 		// HTTP DELETE REQUEST - User Delete
 			@DeleteMapping("/user/delete")
 			public boolean deleteAccount(@RequestParam int id) {
-				User user = dao.findById(id);
+				//User user = dao.findById(id);
 				dao.deleteById(id);
 				return true;
 			}
