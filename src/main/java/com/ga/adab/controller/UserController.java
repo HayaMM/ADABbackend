@@ -4,6 +4,8 @@ import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -12,23 +14,30 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.ga.adab.config.JwtUtil;
 import com.ga.adab.dao.UserDao;
 import com.ga.adab.model.JwtResponse;
 import com.ga.adab.model.User;
+import com.ga.adab.service.MyService;
+
 
 
 @RestController
 public class UserController {
+
+	  private static final Logger logger = LoggerFactory.getLogger("MyController.class");
+	    @Autowired
+	    private MyService myService;
 
 	@Autowired
 	private UserDao dao;
@@ -94,7 +103,7 @@ System.out.print("auth");
 
 	}
 
-	// HTTP GET REQUEST - User Detail
+	// HTTP GET REQUEST - User changepassword
 	@PostMapping("/user/changepassword")
 	public User changepassword(@RequestParam int id, @RequestBody ObjectNode json) {
 
@@ -122,10 +131,33 @@ System.out.print("auth");
 		// HTTP DELETE REQUEST - User Delete
 			@DeleteMapping("/user/delete")
 			public boolean deleteAccount(@RequestParam int id) {
-				User user = dao.findById(id);
+				//User user = dao.findById(id);
 				dao.deleteById(id);
 				return true;
 			}
 
-
+			  @PostMapping("user/image/fileupload")
+			    public User fileUpload(@RequestParam("id") int id, @RequestParam("file") MultipartFile file) {
+				  User user = dao.findById(id); 
+				  
+				  try {
+			            logger.info("id= " + id);
+			            byte[] image = file.getBytes(); 
+			            User newuser = new User(id, image);
+			            int saveImage = myService.saveImage(newuser , user);
+			            if (saveImage == 1) {
+			                return user;
+			            } else {
+			                return user;
+			            }
+			        } catch (Exception e) {
+			            logger.error("ERROR", e);
+			            return user;
+			        }
+			    }
+			  @GetMapping("user/detail")
+			    public User Detils(@RequestParam int id) {
+				  User user =dao.findById(id);
+			    	return user;
+			    }
 }

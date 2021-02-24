@@ -19,6 +19,8 @@ private String qwriter;
 private String qfrom;
 private int qreivew;
 
+
+
 ////Relationship many quotes belongs to one user:
 @ManyToOne
 @JoinColumn(name="FK_UserId")
@@ -28,13 +30,14 @@ private User user;
 @OneToMany(mappedBy="quote")
 private Set<Liked> Likeds;
 
-@Column(name="createdAt", nullable=false, updatable=false)
+@Column(name="createdAt", nullable = false, updatable = false)
 @CreationTimestamp
 private LocalDateTime createAt;
 
-@Column(name="updatedat", nullable=false, updatable=true)
+@Column(name="updatedat", nullable = false, updatable = true)
 @UpdateTimestamp
 private LocalDateTime updateAt;
+
 
 public int getId() {
 	return id;

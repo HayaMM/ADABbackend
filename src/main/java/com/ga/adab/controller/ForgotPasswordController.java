@@ -36,10 +36,10 @@ public class ForgotPasswordController {
 	
 	//method for mapping the post forgot password page
 	@PostMapping("/user/forgotpassword")
-	public boolean processForgotPassword(HttpServletRequest request, Model model ,@RequestBody ObjectNode json) {
+	public String processForgotPassword(HttpServletRequest request) {
 
 		 
-		String email = json.get("emailAddress").asText();  
+		String email = request.getParameter("emailAddress");
 		String token = RandomString.make(30);
 		System.out.println(email);
 		System.out.println(token);
@@ -47,28 +47,28 @@ public class ForgotPasswordController {
 		try {
 			Service.updateResetPasswordToken(token, email);
 			// make reset password link
-//			String siteURL = request.getRequestURL().toString();
-			String resetPasswordLink = HomeController.getSiteURL(request) + "/user/reset_password?token=" + token;
+			String resetPasswordLink = HomeController.getSiteURL(request) + "/user/resetpassword?token=" + token;
 			// send the email
 			sendEmail(email, resetPasswordLink);
-            model.addAttribute("message", "We have sent a reset password link to your email. Please check.");
 			System.out.println("link " + resetPasswordLink);
 
+			return "We have sent a reset password link to your email. Please check.";
 		} catch (UserNotFoundException ex) {
-			model.addAttribute("error", ex.getMessage());
+			
+			return  ex.getMessage();
 		} catch (UnsupportedEncodingException | MessagingException e) {
-			model.addAttribute("error", "Error while sending email");
+			return "Error while sending email";
 		}
 
 		
-		return true;
+		
 	}
 
 	// method for sending an email to the user email
 	public void sendEmail(String email, String resetPasswordLink)
 			throws MessagingException, UnsupportedEncodingException {
 
-		System.out.println("------------------------------in send email");
+		System.out.println("----------------------------------------------------------in send email");
 		MimeMessage message = mailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(message);
 
@@ -104,24 +104,23 @@ public class ForgotPasswordController {
 //
 //	}
  // method for mapping the post of the rest password page and change the old password with the new password
-	@PostMapping("/user/reset_password")
-	public boolean ResetPassword(HttpServletRequest request, Model model,@RequestBody ObjectNode json) {
+	@PostMapping("/user/resetpassword")
+	public boolean ResetPassword(HttpServletRequest request,@RequestParam String password) {
 		
 		System.out.println("------------------------------in reset_password");
 
 		String token = request.getParameter("token");
-//				json.get("token").asText();  
-		String newPassword = json.get("password").asText(); 
+//		String newPassword =request.getParameter("password"); 
 		System.out.println(token);
-		System.out.println(newPassword);
+		System.out.println(password);
 		User user = Service.getByResetPasswordToken(token);
 
 		if(user == null) {
-			model.addAttribute("updatemessage", "Invalid Token");
+			System.out.println( "Invalid Token");
 			return false;
 		}else {
-			Service.updatePassword(user, newPassword);
-			model.addAttribute("updatemessage", "You Have Successfully changed your password");
+			Service.updatePassword(user, password);
+			System.out.println( "You Have Successfully changed your password");
 		}
 		return true;
 		

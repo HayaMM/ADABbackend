@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -32,6 +33,36 @@ public class User {
 	@OneToMany(mappedBy="user")
 	private Set<Quote> quotes;
 	
+	 @Lob
+	    @Column(name = "Image")
+	    private byte[] image;
+
+	    public User() {
+	        super();
+	        // TODO Auto-generated constructor stub
+	    }
+	    public User(int id, byte[] image) {
+	        super();
+	        this.id = id;
+	        this.image = image;
+	    }
+
+
+	public Set<Quote> getQuotes() {
+			return quotes;
+		}
+
+		public void setQuotes(Set<Quote> quotes) {
+			this.quotes = quotes;
+		}
+
+		public Set<Liked> getLikes() {
+			return likes;
+		}
+
+		public void setLikes(Set<Liked> likes) {
+			this.likes = likes;
+		}
 //Relationship one user has many like:
 		@OneToMany(mappedBy="user")
 		private Set<Liked> likes;
@@ -124,24 +155,10 @@ public class User {
 		this.resetPasswordToken = resetPasswordToken;
 	}
 
-	public Set<Quote> getQuotes() {
-		return quotes;
+	public byte[] getImage() {
+		return image;
 	}
-
-	public void setQuotes(Set<Quote> quotes) {
-		this.quotes = quotes;
+	public void setImage(byte[] image) {
+		this.image = image;
 	}
-
-	public Set<Liked> getLikes() {
-		return likes;
-	}
-
-	public void setLikes(Set<Liked> likes) {
-		this.likes = likes;
-	}
-
-	
-	
-	
-
 }
