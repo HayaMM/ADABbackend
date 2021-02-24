@@ -47,7 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/quote/detail","/article/add").hasAnyRole("ADMIN","USER")
 				.antMatchers("/quote/edit","/quote/delete").hasAnyRole("ADMIN","USER")
 //				.antMatchers("/author/delete","/article/delete").hasRole("ADMIN")
-
+		//		.antMatchers("/user/authenticate").permitAll()
 				.and()
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 				;
