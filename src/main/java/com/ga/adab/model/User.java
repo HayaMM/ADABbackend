@@ -15,6 +15,8 @@ import javax.persistence.Table;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "User")
 public class User {
@@ -30,6 +32,7 @@ public class User {
 	private String resetPasswordToken;
 	
 //Relationship one user has many quote:
+	@JsonBackReference
 	@OneToMany(mappedBy="user")
 	private Set<Quote> quotes;
 	
