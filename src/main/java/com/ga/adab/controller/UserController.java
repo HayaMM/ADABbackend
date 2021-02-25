@@ -22,11 +22,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.ga.adab.config.JwtUtil;
 import com.ga.adab.dao.UserDao;
 import com.ga.adab.model.JwtResponse;
+import com.ga.adab.model.Quote;
 import com.ga.adab.model.User;
 import com.ga.adab.service.MyService;
 
@@ -76,7 +78,15 @@ public class UserController {
 		dao.save(user);
 		return user;
 	}
-
+	
+	// Load user profile
+	@GetMapping("/user/profile")
+	public User userProfile(@RequestParam String emailAddress) {
+		User user = dao.findByEmailAddress(emailAddress);
+		user.getEmailAddress();
+		return user;
+	}
+	
 	@Autowired
 	AuthenticationManager authenticationManager;
 	@Autowired
