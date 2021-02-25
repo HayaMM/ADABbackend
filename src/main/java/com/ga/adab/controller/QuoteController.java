@@ -10,15 +10,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ga.adab.dao.QuoteDao;
+import com.ga.adab.dao.UserDao;
 import com.ga.adab.model.Quote;
+import com.ga.adab.model.User;
 
 @RestController
 public class QuoteController {
 @Autowired
 private QuoteDao dao;
+
+@Autowired
+private UserDao udao;
+
 @PostMapping("/quote/add")
-public Quote addQuote(@RequestBody Quote quote) {
+public Quote addQuote(@RequestBody Quote quote,@RequestParam String User ) {
+	User u=udao.findByEmailAddress(User);
+	quote.setUser(u);
 	dao.save(quote);
+	System.out.println(quote.getUser()+"hhhhhhhhhhhhhh");
 	return quote;
 }
 @GetMapping("/quote/index")
