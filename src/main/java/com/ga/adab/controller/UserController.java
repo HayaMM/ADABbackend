@@ -165,9 +165,5 @@ public class UserController {
 			            return user;
 			        }
 			    }
-			  @GetMapping("user/detail")
-			    public User Detils(@RequestParam int id) {
-				  User user =dao.findById(id);
-			    	return user;
-			    }
+
 }
