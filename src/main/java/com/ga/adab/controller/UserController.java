@@ -96,7 +96,7 @@ public class UserController {
 
 	@PostMapping("/user/authenticate")
 	public ResponseEntity<?> authenticate(@RequestBody User user) {
-
+System.out.print("auth");
 		try {
 			authenticationManager
 					.authenticate(new UsernamePasswordAuthenticationToken(user.getEmailAddress(), user.getPassword()));
