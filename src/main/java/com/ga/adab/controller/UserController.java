@@ -147,8 +147,9 @@ public class UserController {
 			  @PostMapping("user/image/fileupload")
 			    public User fileUpload(@RequestParam("id") int id, @RequestParam("file") MultipartFile file) {
 				  User user = dao.findById(id); 
-				  
+				  System.out.println("here "+ file);
 				  try {
+			        	System.out.println(file +" اhereeee "+ file.getBytes());
 			            logger.info("id= " + id);
 			            byte[] image = file.getBytes(); 
 			            User newuser = new User(id, image);
