@@ -87,6 +87,12 @@ public class UserController {
 		return user;
 	}
 	
+	@GetMapping("/user/index")
+	public Iterable<User> getUser(){
+		var it=dao.findAll();
+		return it;
+	}
+	
 	@Autowired
 	AuthenticationManager authenticationManager;
 	@Autowired
@@ -165,5 +171,12 @@ public class UserController {
 			            return user;
 			        }
 			    }
+			  
+			  @GetMapping("user/info")
+			  public User infoUser(@RequestParam String emailAddress) {
+				  User user = dao.findByEmailAddress(emailAddress);
+				  return user;
+				  
+			  }
 
 }

@@ -28,6 +28,7 @@ public class User {
 	private String emailAddress;
 	private Date dateofBirth;
 	private String password;
+	private String confpassword;
 	private String userRole;
 	private String resetPasswordToken;
 	
@@ -164,4 +165,11 @@ public class User {
 	public void setImage(byte[] image) {
 		this.image = image;
 	}
+	public String getConfpassword() {
+		return confpassword;
+	}
+	public void setConfpassword(String confpassword) {
+		this.confpassword = confpassword;
+	}
+	
 }
