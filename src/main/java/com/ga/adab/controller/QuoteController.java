@@ -27,7 +27,6 @@ public Quote addQuote(@RequestBody Quote quote,@RequestParam String User ) {
 	User u=udao.findByEmailAddress(User);
 	quote.setUser(u);
 	dao.save(quote);
-	System.out.println(quote.getUser()+"hhhhhhhhhhhhhh");
 	return quote;
 }
 @GetMapping("/quote/index")
