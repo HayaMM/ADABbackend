@@ -28,6 +28,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.ga.adab.config.JwtUtil;
 import com.ga.adab.dao.UserDao;
 import com.ga.adab.model.JwtResponse;
+import com.ga.adab.model.Quote;
 import com.ga.adab.model.User;
 import com.ga.adab.service.MyService;
 
