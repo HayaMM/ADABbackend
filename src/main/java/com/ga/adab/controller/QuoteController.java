@@ -34,6 +34,7 @@ public Iterable<Quote> getQuote(){
 	var it=dao.findAll();
 	return it;
 }
+
 @GetMapping("/quote/detail")
 public Quote quoteDetails(@RequestParam int id) {
 Quote quote =dao.findById(id);
