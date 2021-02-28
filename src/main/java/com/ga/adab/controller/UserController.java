@@ -22,13 +22,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.ga.adab.config.JwtUtil;
 import com.ga.adab.dao.UserDao;
 import com.ga.adab.model.JwtResponse;
-import com.ga.adab.model.Quote;
 import com.ga.adab.model.User;
 import com.ga.adab.service.MyService;
 
@@ -147,11 +145,11 @@ public class UserController {
 		// HTTP DELETE REQUEST - User Delete
 			@DeleteMapping("/user/delete")
 			public boolean deleteAccount(@RequestParam int id) {
-				//User user = dao.findById(id);
 				dao.deleteById(id);
 				return true;
 			}
 
+			// HTTP UPLOUD REQUEST - user uploud image 
 			  @PostMapping("user/image/fileupload")
 			    public User fileUpload(@RequestParam("id") int id, @RequestParam("file") MultipartFile file) {
 				  User user = dao.findById(id); 
@@ -178,5 +176,16 @@ public class UserController {
 				  return user;
 				  
 			  }
-
+			  @GetMapping("/getimg")
+			    public byte[] getDbDetils( int id) {
+				  User user = dao.findById(id);
+			        try {
+			            logger.info("Id= " + id);
+			            byte[] encode = java.util.Base64.getEncoder().encode(user.getImage());
+			            return encode;
+			        } catch (Exception e) {
+			            logger.error("Error", e);
+			            return null;
+			        }
+			    }
 }
