@@ -1,6 +1,7 @@
 package com.ga.adab.controller;
 
 import java.util.HashMap;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -85,6 +86,13 @@ public class UserController {
 		User user = dao.findByEmailAddress(emailAddress);
 		user.getEmailAddress();
 		return user;
+	}
+	@GetMapping("/user/indexquote")
+	public Iterable<Quote> getQuote(@RequestParam String emailAddress){
+		User u=dao.findByEmailAddress(emailAddress);
+		Set<Quote> q=u.getQuotes();
+		System.out.println(q+"hhhhhhhhhhhhhhhh");
+		return q;
 	}
 	
 	@Autowired
