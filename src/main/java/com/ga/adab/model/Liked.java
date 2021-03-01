@@ -5,6 +5,8 @@ import javax.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name="Liked")
 public class Liked {
@@ -20,6 +22,7 @@ public class Liked {
 	private User user;
 	
 	//// Relationship many likes for one quote:
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name="FK_QuoteId")
 	private Quote quote;

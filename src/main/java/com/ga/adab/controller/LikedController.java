@@ -1,5 +1,7 @@
 package com.ga.adab.controller;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.ga.adab.dao.LikedDao;
 import com.ga.adab.dao.QuoteDao;
 import com.ga.adab.dao.UserDao;
@@ -33,16 +36,36 @@ public class LikedController {
 	
 	@Transactional
 	@PostMapping("/liked/add")
-	public Liked addLiked(@RequestBody Liked liked ) {
-		Quote q = liked.getQuote();
-		int id = q.getId();
-		User u =liked.getUser();
-		liked.setQuote(q);
-		liked.setUser(u);
-		dao.save(liked);
-		int likes = dao.getlikes(id);
-		quotedao.setlikes(id, likes);
-		return liked;
+	public boolean addLiked(@RequestBody ObjectNode json)throws IOException  {
+		
+		System.out.println("---------------in like adddd");
+		try {
+			
+		String userid = json.get("user").asText();
+		int qouteid = json.get("qouteid").asInt();
+		boolean like = json.get("like").asBoolean();
+		System.out.println("---------------in like "+userid+" "+qouteid+" "+like);
+
+		Quote idq = quotedao.findById(qouteid);
+		User idu = userdao.findByEmailAddress(userid);
+		Liked likes = new Liked();
+		likes.setQuote(idq);
+		likes.setUser(idu);
+		likes.setQliked(like);
+		
+		dao.save(likes);
+		
+		int likess = dao.getlikes(qouteid);
+		quotedao.setlikes(qouteid, likess);
+		return true;
+
+		}catch (NullPointerException ex) {
+			System.out.println( "Caught this exception " + ex);
+	          ex.printStackTrace();
+	  		return false;
+
+	      }
+
 	}
 	@GetMapping("/liked/index")
 	public Iterable<Liked> getLiked(){
@@ -51,9 +74,15 @@ public class LikedController {
 	}
 
 	@GetMapping("/liked/detail")
-	public Liked DetailLiked(@RequestParam int id) {
+	public boolean DetailLiked(@RequestParam int id,@RequestBody ObjectNode json) {
+		int userid = json.get("user").asInt();
+		int qouteid = json.get("qouteid").asInt();
 		Liked liked=dao.findById(id);
-		return liked;
+		if(liked.getUser().equals(userdao.findById(userid)) && liked.getQuote().equals(quotedao.findById(qouteid))) {
+		return liked.getQliked();
+		}
+		
+		return false;
 	}
 	@PutMapping("/liked/edit")
 	public Liked editLiked(@RequestBody Liked liked) {
