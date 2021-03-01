@@ -38,13 +38,11 @@ public class LikedController {
 	@PostMapping("/liked/add")
 	public boolean addLiked(@RequestBody ObjectNode json)throws IOException  {
 		
-		System.out.println("---------------in like adddd");
 		try {
 			
 		String userid = json.get("user").asText();
 		int qouteid = json.get("qouteid").asInt();
 		boolean like = json.get("like").asBoolean();
-		System.out.println("---------------in like "+userid+" "+qouteid+" "+like);
 
 		Quote idq = quotedao.findById(qouteid);
 		User idu = userdao.findByEmailAddress(userid);
@@ -56,6 +54,8 @@ public class LikedController {
 		dao.save(likes);
 		
 		int likess = dao.getlikes(qouteid);
+		System.out.println("---------------in like "+likess);
+
 		quotedao.setlikes(qouteid, likess);
 		return true;
 
@@ -73,26 +73,42 @@ public class LikedController {
 		return it;
 	}
 
-	@GetMapping("/liked/detail")
-	public boolean DetailLiked(@RequestParam int id,@RequestBody ObjectNode json) {
-		int userid = json.get("user").asInt();
-		int qouteid = json.get("qouteid").asInt();
-		Liked liked=dao.findById(id);
-		if(liked.getUser().equals(userdao.findById(userid)) && liked.getQuote().equals(quotedao.findById(qouteid))) {
-		return liked.getQliked();
+	@Transactional
+	@GetMapping("/liked/islike")
+	public boolean isLiked(@RequestParam("qouteid") int qouteid, @RequestParam("useremail") String useremail) {
+		System.out.println("-----------");
+
+		boolean islike =false;
+		 try {
+		User isuser = userdao.findByEmailAddress(useremail);
+		Quote isqoute = quotedao.findById(qouteid);
+		if((isuser != null) && (isqoute != null)) {
+			int uid = isuser.getId();
+			 islike = dao.islike(qouteid, uid);
 		}
+		return islike;
+    } catch (Exception e) {
+        System.out.println("ERROR"+" "+ e);
+        return islike;
+    }
 		
-		return false;
+		
 	}
-	@PutMapping("/liked/edit")
-	public Liked editLiked(@RequestBody Liked liked) {
-		dao.save(liked);
-		return liked;
-	}
+	@Transactional
 	@DeleteMapping("/liked/delete")
-	public boolean deleteLiked(@RequestParam int id) {
+	public boolean deleteLiked(@RequestParam("qid") int qid, @RequestParam("useremail") String useremail) {
+		User isuser = userdao.findByEmailAddress(useremail);
+		int uid = isuser.getId();
+		Quote idq = quotedao.findById(qid);
+		if(!isuser.equals(null) && !idq.equals(null)) {
+		int id = dao.isDeleteid(qid,uid);
 		dao.deleteById(id);
+		int likess = dao.getlikes(qid);
+		quotedao.setlikes(qid, likess);
 		return true;
+		}else {
+		return false;
+		}
 	}
 
 }
