@@ -1,27 +1,48 @@
-## ADAB Application:
-ADAB App is a web application that allows the user to sign up and log in to the website to perform the CRUD functionalities which are adding, editing, see the details of the Quotes, and deleting and the user can like or dislike the quotes, the user can also see the most like quote in ADAB website, the user can reset the password when forget the password. The app uses JWT for authentication and authorization. and there are three tables in the database: User, Quote, Liked. for more insight about our design of the database see this diagram [ERD](ADAB_ERD.png).
+<img src="https://i.ibb.co/fnb0TYy/F4273-E7-D-3-D8-E-4-B93-A785-D26-AA09-BC177.png" width="300" height="200">
+
+## ADAB Application: 
+ADAB App is a web application that allows the user to sign up and log in to the website to perform the CRUD functionalities which are adding, editing, see the details of the Quotes, and deleting, the user can like or dislike the quotes, the user can also see the most like quote in ADAB website, the user can reset the password when forget the password. The app uses JWT for authentication and authorization. and there are three tables in the database: **User**, **Quote**, **Liked**. for more insight about our design of the database see this diagram [ERD](ADAB_ERD.png).
 
 #### The Front End side:
 The Frontend for ADAB application [here](https://git.generalassemb.ly/ghaidhusall/ADABfrontend).
 
-####Deployed sites:
+#### Deployed sites:
 * Front end: 
 * Back end: 
 
 #### Technologies used: 
 ADAB Application uses a number of technologies:
-* Java.
-* Spring boot.
-* Tomcat server.
-* CSS , Bootstrap.
-* React.
-* MySQL.
+* Java, Spring Boot 
+* Server, Apache Tomcat
+* MySQL Database
+* React
+* Cascading Style Sheets and Bootstrap 
+* JavaScript and HTML
+* AWS, to deploy the web application
+* GitHub, group project
+* Git Bash
 
 #### Future Work:
-
+The user of **ADAB** will be able to follow friends and be a part of the community of adab lovers to share ,rate quotes and poems.
 #### Planning Documentation:
+<img src="https://i.ibb.co/z6hRczd/E123-C424-1085-47-E1-B78-C-AF2-CE2-E92612.jpg" width="500" height="300">
 
 #### Catalog of Routes (paths and methods) that the API expects:
+| Verb        | URI Pattern           |
+| ------------- |:-------------:| 
+|GET     | /profile | 
+| GET     | /indexquote      |   
+| GET | /index    |  
+| GET | /info      |  
+| GET | /getimg      |  
+| GET | /detail:id      |  
+| POST | /registration      |  
+| POST | /authenticate      |  
+| POST | /changepassword      | 
+| POST | /reset_password      |   
+| PUT | /edit      |  
+| DELETE | /delete      |  
+
 
 | Verb | URI Pattern |
 
