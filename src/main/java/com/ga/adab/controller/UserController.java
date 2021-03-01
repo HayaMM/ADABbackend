@@ -128,7 +128,7 @@ public class UserController {
 
 	// HTTP GET REQUEST - User changepassword
 	@PostMapping("/user/changepassword")
-	public User changepassword(@RequestParam int id, @RequestBody ObjectNode json) {
+	public boolean changepassword(@RequestParam int id, @RequestBody ObjectNode json) {
 
 		BCryptPasswordEncoder bCrypt = new BCryptPasswordEncoder();
 		User user = dao.findById(id);
@@ -140,13 +140,15 @@ public class UserController {
 			user.setPassword(cryptPassword);
 			dao.save(user);
 			System.out.println("equless");
+			
+			return true ;
 
 		} else {
 			System.out.println("not equless");
+			return false;
 		}
 
 
-		return user;
 	}
 		
 
