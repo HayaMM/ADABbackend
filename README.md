@@ -1,4 +1,4 @@
-<img src="https://i.ibb.co/fnb0TYy/F4273-E7-D-3-D8-E-4-B93-A785-D26-AA09-BC177.png" width="300" height="200">
+<img src="https://i.ibb.co/fnb0TYy/F4273-E7-D-3-D8-E-4-B93-A785-D26-AA09-BC177.png" width="100" height="100">
 
 ## ADAB Application: 
 ADAB App is a web application that allows the user to sign up and log in to the website to perform the CRUD functionalities which are adding, editing, see the details of the Quotes, and deleting, the user can like or dislike the quotes, the user can also see the most like quote in ADAB website, the user can reset the password when forget the password. The app uses JWT for authentication and authorization. and there are three tables in the database: **User**, **Quote**, **Liked**. for more insight about our design of the database see this diagram [ERD](ADAB_ERD.png).
@@ -25,7 +25,8 @@ ADAB Application uses a number of technologies:
 #### Future Work:
 The user of **ADAB** will be able to follow friends and be a part of the community of adab lovers to share ,rate quotes and poems.
 #### Planning Documentation:
-<img src="https://i.ibb.co/z6hRczd/E123-C424-1085-47-E1-B78-C-AF2-CE2-E92612.jpg" width="500" height="300">
+The planning documentation for two weeks to build adab website [here](Planing.jpg)
+
 
 #### Catalog of Routes (paths and methods) that the API expects:
 | Verb        | URI Pattern           |
