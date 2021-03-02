@@ -25,7 +25,7 @@ ADAB Application uses a number of technologies:
 #### Future Work:
 The user of **ADAB** will be able to follow friends and be a part of the community of adab lovers to share ,rate quotes and poems.
 #### Planning Documentation:
-The planning documentation for two weeks to build adab website [here]
+The planning documentation for two weeks to build adab website [here](Planing.jpg)
 
 
 #### Catalog of Routes (paths and methods) that the API expects:
