@@ -33,7 +33,7 @@ public class User {
 	private String resetPasswordToken;
 	
 //Relationship one user has many quote:
-	@JsonBackReference
+	@JsonBackReference("qoutes")
 	@OneToMany(mappedBy="user")
 	private Set<Quote> quotes;
 	
@@ -68,6 +68,7 @@ public class User {
 			this.likes = likes;
 		}
 //Relationship one user has many like:
+		@JsonBackReference("likes")
 		@OneToMany(mappedBy="user")
 		private Set<Liked> likes;
 

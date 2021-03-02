@@ -6,6 +6,8 @@ import javax.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name="Quote")
 public class Quote {
@@ -27,6 +29,7 @@ private int qreivew;
 private User user;
 
 ////Relationship one quote has many likes:
+
 @OneToMany(mappedBy="quote")
 private Set<Liked> Likeds;
 
