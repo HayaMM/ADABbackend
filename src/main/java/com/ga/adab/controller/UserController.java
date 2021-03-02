@@ -99,6 +99,12 @@ public class UserController {
 		var it=dao.findAll();
 		return it;
 	}
+	// User Details...
+	@GetMapping("/user/detail")
+	public User userDetails(@RequestParam String emailAddress) {
+	User user =dao.findByEmailAddress(emailAddress);
+	return user;
+	}
 	
 	@Autowired
 	AuthenticationManager authenticationManager;
