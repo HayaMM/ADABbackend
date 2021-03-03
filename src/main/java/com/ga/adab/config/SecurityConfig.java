@@ -44,10 +44,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			http
 			.csrf().disable()
 			.authorizeRequests()
-				.antMatchers("/quote/detail","/quote/add").hasAnyRole("ADMIN","USER")
-				.antMatchers("/quote/edit","/quote/delete").hasAnyRole("ADMIN","USER")
-			.antMatchers("/liked/add").hasAnyRole("ADMIN","USER")
-
+				.antMatchers("/quote/detail","/quote/add" , "/quote/index", "/quote/edit","/quote/delete").hasAnyRole("ADMIN","USER")
+				.antMatchers("/user/edit","/user/profile" , "/user/indexquote" , "/user/index" , "/user/changepassword" ,"user/image/fileupload" ,"user/info").hasAnyRole("ADMIN","USER")
+			.antMatchers("/liked/add" , "/liked/islike" , "/liked/delete").hasAnyRole("ADMIN","USER")
+			.antMatchers("/user/delete").hasRole("ADMIN")
+			
 
 				.and()
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
