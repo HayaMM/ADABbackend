@@ -18,6 +18,7 @@ The Git repository of ADAB's Frontend:  [here](https://git.generalassemb.ly/ghai
 * Server, **Apache Tomcat**
 * RESTful **APIs**
 * **MySQL** Database
+* **AWS**, to deploy the web application
 * **GitHub**, group project
 * **Git Bash**
 
