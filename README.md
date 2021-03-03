@@ -8,9 +8,9 @@ The Git repository of ADAB's Frontend:  [here](https://git.generalassemb.ly/ghai
 
 ### **Deployed** sites:
 * **Front end**: 
-[here]().
+[here](https://pages.git.generalassemb.ly/ghaidhusall/ADABfrontend/).
 * **Back end**: 
-[here]().
+[here](http://adab-env.eba-nafjbdmq.us-east-2.elasticbeanstalk.com).
 
 ### **Technologies** used: 
 **ADAB** used a number of technologies:
@@ -117,4 +117,4 @@ ___
 The user of **ADAB** will be able to follow friends and be a part of the community of adab lovers to share ,rate quotes and poems.
 ### Resources
 *  **https://www.codejava.net/frameworks/spring-boot/spring-security-forgot-password-tutorial**
-*  **https://create-react-app.dev/docs/adding-custom-environment-variables**
+
