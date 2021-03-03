@@ -90,7 +90,6 @@ public class UserController {
 	public Iterable<Quote> getQuote(@RequestParam String emailAddress){
 		User u=dao.findByEmailAddress(emailAddress);
 		Set<Quote> q=u.getQuotes();
-		System.out.println(q+"hhhhhhhhhhhhhhhh");
 		return q;
 	}
 	

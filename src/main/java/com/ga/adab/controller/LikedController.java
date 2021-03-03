@@ -67,11 +67,6 @@ public class LikedController {
 	      }
 
 	}
-	@GetMapping("/liked/index")
-	public Iterable<Liked> getLiked(){
-		var it=dao.findAll();
-		return it;
-	}
 
 	@Transactional
 	@GetMapping("/liked/islike")

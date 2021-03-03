@@ -47,7 +47,7 @@ public class ForgotPasswordController {
 		try {
 			Service.updateResetPasswordToken(token, email);
 			// make reset password link
-			String resetPasswordLink = HomeController.getSiteURL(request) + "/user/resetpassword?token=" + token;
+			String resetPasswordLink = "https://pages.git.generalassemb.ly/ghaidhusall/ADABfrontend/"+"/resetpassword?token=" + token;
 			// send the email
 			sendEmail(email, resetPasswordLink);
 			System.out.println("link " + resetPasswordLink);
