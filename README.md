@@ -1,77 +1,119 @@
 <img src="https://i.ibb.co/fnb0TYy/F4273-E7-D-3-D8-E-4-B93-A785-D26-AA09-BC177.png" width="100" height="100">
 
-## ADAB Application: 
-ADAB App is a web application that allows the user to sign up and log in to the website to perform the CRUD functionalities which are adding, editing, see the details of the Quotes, and deleting, the user can like or dislike the quotes, the user can also see the most like quote in ADAB website, the user can reset the password when forget the password. The app uses JWT for authentication and authorization. and there are three tables in the database: **User**, **Quote**, **Liked**. for more insight about our design of the database see this diagram [ERD](ADAB_ERD.png).
+## **ADAB** Application: 
+**ADAB** is a web application that allows the user to **sign up** and **log in** to the website to perform the **CRUD** functionalities which are **adding**, **editing**, **deleting**, and **viewing** the details of **Quotes**. User can **like quotes**, view the **most liked** quotes of **ADAB** website. User can **reset the password** when forget the password. The app uses **JWT** for **authentication** and **authorization**. 
 
-#### The Front End side:
-The Frontend for ADAB application [here](https://git.generalassemb.ly/ghaidhusall/ADABfrontend).
+###  **Front End** repository:
+The Git repository of ADAB's Frontend:  [here](https://git.generalassemb.ly/ghaidhusall/ADABfrontend).
 
-#### Deployed sites:
-* Front end: 
-* Back end: 
+### **Deployed** sites:
+* **Front end**: 
+[here]().
+* **Back end**: 
+[here]().
 
-#### Technologies used: 
-ADAB Application uses a number of technologies:
-* Java, Spring Boot 
-* Server, Apache Tomcat
-* MySQL Database
-* React
-* Cascading Style Sheets and Bootstrap 
-* JavaScript and HTML
-* AWS, to deploy the web application
-* GitHub, group project
-* Git Bash
+### **Technologies** used: 
+**ADAB** used a number of technologies:
+* Java, **Spring Boot**
+* Server, **Apache Tomcat**
+* RESTful **APIs**
+* **MySQL** Database
+* **GitHub**, group project
+* **Git Bash**
 
-#### Future Work:
-The user of **ADAB** will be able to follow friends and be a part of the community of adab lovers to share ,rate quotes and poems.
-#### Planning Documentation:
-The planning documentation for two weeks to build adab website [here](Planing.jpg)
+### **Entity–relationship** model
+There are three tables in the database: **User**, **Quote**, **Liked**. 
+<img src="ADAB_ERD.png">
 
+## **Planning** documentation:
+The planning documentation for **two weeks** to build **ADAB** website [here](Planing.jpg).
 
-#### Catalog of Routes (paths and methods) that the API expects:
+## Catalog of **Routes**:
 | Verb        | URI Pattern           |
 | ------------- |:-------------:| 
-|GET     | /profile | 
-| GET     | /indexquote      |   
-| GET | /index    |  
-| GET | /info      |  
-| GET | /getimg      |  
-| GET | /detail:id      |  
-| POST | /registration      |  
-| POST | /authenticate      |  
-| POST | /changepassword      | 
-| POST | /reset_password      |   
-| PUT | /edit      |  
-| DELETE | /delete      |  
+|POST     | /user/registration | 
+| POST     | /user/authenticate      |   
+| POST | /user/changepassword    |  
+| POST | /user/resetpassword    |  
+| POST | /user/forgotpassword    | 
+| POST | /user/image/fileupload      |  
+| GET | /user/profile     |  
+| GET | /user/index      |  
+| GET | /user/info     |  
+| GET | /user/indexquote      |  
+| PUT | /user/edit     |  
+| DELETE | /user/delete    |   
+____
 
+| Verb        | URI Pattern           |
+| ------------- |:-------------:| 
+|POST     | /quote/add | 
+| GET     | /quote/index      |   
+| GET | /quote/detail    |  
+| PUT | /quote/edit      |  
+| DELETE | /quote/delete      |  
+___
+| Verb        | URI Pattern           |
+| ------------- |:-------------:| 
+|POST     | /liked/add | 
+| GET     | /liked/islike      |   
+| DELETE | /liked/delete      |  
+___
 
-| Verb | URI Pattern |
-
-| ------------- | ------------- |
-
-| POST | /user/registration |
-| POST | /user/authenticate |
-| POST | /user/changepassword |
-| PUT | /user/edit |
-| DELETE | /user/delete |
-| POST | /user/reset_password |
-
-| Verb | URI Pattern |
-
-| ------------- | ------------- |
-
-| POST | /quote/add |
-| GET | /quote/index |
-| GET | /quote/detail |
-| PUT | /quote/edit |
-| DELETE | /quote/delete |
-
-| Verb | URI Pattern |
-
-| ------------- | ------------- |
-
-| POST | /liked/add |
-| GET | /liked/index |
-| GET | /liked/detail |
-| PUT | /liked/edit |
-| DELETE | /liked/delete |
+## **Installation** Instructions:
+### System requirements: 
+* Spring Boot, Build tool Maven
+### Servlet Containers:
+* Tomcat v9
+### Creating the POM file 
+* JPA dependency to accessing data:
+```
+<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+```
+* MySQL dependency to connect database:
+```
+   <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+```
+* Tomcat dependency:
+```
+    <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
+```
+* Testing dependency:
+```
+    <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+```
+* Spring security dependency:
+```
+    <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+        </dependency>
+```
+* JSON Web Token (JWT) dependency:
+```
+<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.9.1</version>
+		</dependency>
+```
+## Future work and unsolved problems:
+The user of **ADAB** will be able to follow friends and be a part of the community of adab lovers to share ,rate quotes and poems.
+## Resources
+*  **https://www.codejava.net/frameworks/spring-boot/spring-security-forgot-password-tutorial**
+*  **https://create-react-app.dev/docs/adding-custom-environment-variables**
