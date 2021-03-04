@@ -1,14 +1,25 @@
 <img src="https://i.ibb.co/fnb0TYy/F4273-E7-D-3-D8-E-4-B93-A785-D26-AA09-BC177.png" width="100" height="100">
+
 ## **ADAB** Application: 
-**ADAB** is a web application that allows the user to **sign up** and **log in** to the website to perform the **CRUD** functionalities which are **adding**, **editing**, **deleting**, and **viewing** the details of **Quotes**. User can **like quotes**, view the **most liked** quotes of **ADAB** website. User can **reset the password** when forget the password. The app uses **JWT** for **authentication** and **authorization**. 
+
+**ADAB** is a web application that allows the user to **sign up** and **log in** to the website to perform the **CRUD** functionalities which are **adding**, **editing**, **deleting**, and **viewing** the details of **Quotes**. User can **like quotes**, view the **most liked** quotes of **ADAB** website. User can **reset the password** when 
+forget the password. The app uses **JWT** for **authentication** and **authorization**. 
+
 ### **Back End** repository:
 The Git repository of ADAB's BackEnd: [here](https://git.generalassemb.ly/ghaidhusall/ADABbackend).
+
 ### **Deployed** sites:
+
 * **Front end**: 
+
 [here](https://pages.git.generalassemb.ly/ghaidhusall/ADABfrontend/).
+
 * **Back end**: 
+
 [here](http://adab-env.eba-nafjbdmq.us-east-2.elasticbeanstalk.com).
+
 ### **Technologies** used: 
+
 **ADAB** used a number of technologies:
 * **Git Bash**
 * **React**
@@ -17,12 +28,18 @@ The Git repository of ADAB's BackEnd: [here](https://git.generalassemb.ly/ghaidh
 * **JavaScript** and **HTML**
 * **GitHub**, group project
 * **GitHub Pages**, to deploy the web application.
+
 ### **Planning** documentation:
+
 The planning documentation for **two weeks** to build **ADAB** website [here](Planing.jpg).
+
 ### **Wireframes**:
+
  <img src="wireframe1.jpeg">
  <img src="wireframe2.jpeg">
+ 
  ### **User stories**:
+ 
 * As a user, I want to be able to create an account, so that I can login.
  * As a user, I want to be able to login, so that I can access the website's functionalities. 
 * As a user, I want to manage my profile so that I can view and update my account details.
@@ -33,7 +50,9 @@ The planning documentation for **two weeks** to build **ADAB** website [here](Pl
 * As a user, I want to upload a profile picture, so that the users who are logged in can see it on my profile page.
 * As a user, I want to view quotes of higher number of likes, so that I can see the most famous quotes.
 * As an admin, I want to manage user accounts, so that I can delete any account.
+
 ### Embedded screenshot of the app:
+
 * Registration: 
 [HERE](reg.png).
 * Login: 
