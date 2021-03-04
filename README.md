@@ -58,7 +58,9 @@ The planning documentation for **two weeks** to build **ADAB** website [here](Pl
 [HERE](userquotes.png).
 * About the website: 
 [HERE](aboutus.png).
+
 ### **Installation** Instructions:
+
 This project was created with:
 ```
 create-react-app
@@ -72,8 +74,11 @@ You can then run it with:
  npm start
 ```
 ### **Future work** and **unsolved problems**:
+
 The user of **ADAB** will be able to follow friends and be a part of the community of adab lovers to share ,rate quotes and poems.
+
 ### Resources
+
 *  **https://www.codejava.net/frameworks/spring-boot/spring-security-forgot-password-tutorial**
 *  **https://create-react-app.dev/docs/adding-custom-environment-variables**
 *  **https://jwt.io/**
