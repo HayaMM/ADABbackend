@@ -1,6 +1,7 @@
 <img src="https://i.ibb.co/fnb0TYy/F4273-E7-D-3-D8-E-4-B93-A785-D26-AA09-BC177.png" width="100" height="100">
 
 ## **ADAB** Application: 
+
 **ADAB** is a web application that allows the user to **sign up** and **log in** to the website to perform the **CRUD** functionalities which are **adding**, **editing**, **deleting**, and **viewing** the details of **Quotes**. User can **like quotes**, view the **most liked** quotes of **ADAB** website. User can **reset the password** when forget the password. The app uses **JWT** for **authentication** and **authorization**. 
 
 ###  **Front End** repository:
@@ -117,4 +118,8 @@ ___
 The user of **ADAB** will be able to follow friends and be a part of the community of adab lovers to share ,rate quotes and poems.
 ### Resources
 *  **https://www.codejava.net/frameworks/spring-boot/spring-security-forgot-password-tutorial**
+*  **https://create-react-app.dev/docs/adding-custom-environment-variables**
+*  **https://jwt.io/**
+*  **https://material-ui.com/components/text-fields/**
+*  **https://levelup.gitconnected.com/building-a-simple-dynamic-search-bar-in-react-js-f1659d64dfae?gi=216690603c1d**
 
