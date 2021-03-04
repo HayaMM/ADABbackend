@@ -28,7 +28,7 @@ There are three tables in the database: **User**, **Quote**, **Liked**.
 
 ### **Planning** documentation:
 The planning documentation for **two weeks** to build **ADAB** website [here](Planing.jpg).
-
+ 
 ### Catalog of **Routes**:
 | Verb        | URI Pattern           |
 | ------------- |:-------------:| 

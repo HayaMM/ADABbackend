@@ -35,7 +35,7 @@ public Quote addQuote(@RequestBody Quote quote,@RequestParam String User ) {
 public Iterable<Quote> getQuote(){
 	var it=dao.findAll();
 	return it;
-}
+} 
 
 @GetMapping("/quote/detail")
 public Quote quoteDetails(@RequestParam int id) {
